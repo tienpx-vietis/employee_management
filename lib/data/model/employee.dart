@@ -4,8 +4,9 @@ part 'employee.freezed.dart';
 part 'employee.g.dart';
 
 @freezed
-abstract class Employee with _$Employee {
+class Employee with _$Employee {
   factory Employee({
+    int? id,
     String? name,
     int? yearBorn ,
     double? salary

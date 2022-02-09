@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'employee.dart';
@@ -21,8 +22,9 @@ Employee _$EmployeeFromJson(Map<String, dynamic> json) {
 class _$EmployeeTearOff {
   const _$EmployeeTearOff();
 
-  _Employee call({String? name, int? yearBorn, double? salary}) {
+  _Employee call({int? id, String? name, int? yearBorn, double? salary}) {
     return _Employee(
+      id: id,
       name: name,
       yearBorn: yearBorn,
       salary: salary,
@@ -39,6 +41,7 @@ const $Employee = _$EmployeeTearOff();
 
 /// @nodoc
 mixin _$Employee {
+  int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get yearBorn => throw _privateConstructorUsedError;
   double? get salary => throw _privateConstructorUsedError;
@@ -53,7 +56,7 @@ mixin _$Employee {
 abstract class $EmployeeCopyWith<$Res> {
   factory $EmployeeCopyWith(Employee value, $Res Function(Employee) then) =
       _$EmployeeCopyWithImpl<$Res>;
-  $Res call({String? name, int? yearBorn, double? salary});
+  $Res call({int? id, String? name, int? yearBorn, double? salary});
 }
 
 /// @nodoc
@@ -66,11 +69,16 @@ class _$EmployeeCopyWithImpl<$Res> implements $EmployeeCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? yearBorn = freezed,
     Object? salary = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,7 +100,7 @@ abstract class _$EmployeeCopyWith<$Res> implements $EmployeeCopyWith<$Res> {
   factory _$EmployeeCopyWith(_Employee value, $Res Function(_Employee) then) =
       __$EmployeeCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, int? yearBorn, double? salary});
+  $Res call({int? id, String? name, int? yearBorn, double? salary});
 }
 
 /// @nodoc
@@ -106,11 +114,16 @@ class __$EmployeeCopyWithImpl<$Res> extends _$EmployeeCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? yearBorn = freezed,
     Object? salary = freezed,
   }) {
     return _then(_Employee(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -130,11 +143,13 @@ class __$EmployeeCopyWithImpl<$Res> extends _$EmployeeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Employee implements _Employee {
-  _$_Employee({this.name, this.yearBorn, this.salary});
+  _$_Employee({this.id, this.name, this.yearBorn, this.salary});
 
   factory _$_Employee.fromJson(Map<String, dynamic> json) =>
       _$$_EmployeeFromJson(json);
 
+  @override
+  final int? id;
   @override
   final String? name;
   @override
@@ -144,7 +159,7 @@ class _$_Employee implements _Employee {
 
   @override
   String toString() {
-    return 'Employee(name: $name, yearBorn: $yearBorn, salary: $salary)';
+    return 'Employee(id: $id, name: $name, yearBorn: $yearBorn, salary: $salary)';
   }
 
   @override
@@ -152,14 +167,19 @@ class _$_Employee implements _Employee {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Employee &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.yearBorn, yearBorn) ||
-                other.yearBorn == yearBorn) &&
-            (identical(other.salary, salary) || other.salary == salary));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.yearBorn, yearBorn) &&
+            const DeepCollectionEquality().equals(other.salary, salary));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, yearBorn, salary);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(yearBorn),
+      const DeepCollectionEquality().hash(salary));
 
   @JsonKey(ignore: true)
   @override
@@ -173,11 +193,13 @@ class _$_Employee implements _Employee {
 }
 
 abstract class _Employee implements Employee {
-  factory _Employee({String? name, int? yearBorn, double? salary}) =
+  factory _Employee({int? id, String? name, int? yearBorn, double? salary}) =
       _$_Employee;
 
   factory _Employee.fromJson(Map<String, dynamic> json) = _$_Employee.fromJson;
 
+  @override
+  int? get id;
   @override
   String? get name;
   @override
