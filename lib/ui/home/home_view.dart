@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeViewState extends State<HomeView> {
   final vm = Get.find<HomeViewModel>();
 
   @override
   void initState() {
     super.initState();
-    vm.employeesStore.getListEmployees();
+    vm.getAllEmployee();
   }
 
   @override
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
                 icon: const Icon(Icons.add),
                 onPressed: () {
-                  vm.toUpsertEmployee(null);
+                  vm.toAddEmployee();
                 }),
           ],
         ),
@@ -56,14 +56,10 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Card(
                 child: Observer(builder: (context) {
-                  final store = vm.employeesStore;
-                  if (store.isLoading) {
+                  if (vm.isLoading) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (store.employees == null) {
-                    return Container();
-                  }
-                  final employees = store.employees!;
+                  final employees = vm.employees;
                   return ListView.separated(
                     itemCount: employees.length,
                     separatorBuilder: (BuildContext context, int index) =>
@@ -80,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                             icon: const Icon(Icons.edit),
                             iconSize: 20,
                             onPressed: () {
-                              vm.toUpsertEmployee(employee);
+                              vm.toEditEmployee(employee);
                             }),
                       );
                     },

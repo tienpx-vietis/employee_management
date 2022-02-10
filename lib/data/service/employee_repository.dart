@@ -4,7 +4,7 @@ import 'package:employee_management/data/model/employee.dart';
 import 'package:get/get.dart';
 import 'package:sembast/sembast.dart';
 
-class EmployeeService {
+class EmployeeRepository {
   final _store = intMapStoreFactory.store('employee');
 
   Future<Database> get _db async => await Get.find<LocalDatabase>().database;
